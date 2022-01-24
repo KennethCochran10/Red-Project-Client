@@ -1,25 +1,70 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import SiteBar from "./home/SiteBar";
+import Auth from './auth/Auth';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+} from 'react-router-dom';
+import TrackerTable from "./trackers/trackerTable";
+import TrackerCreate from './trackers/trackerCreate';
+import TrackerEdit from "./trackers/trackerEdit";
+import TrackerDelete from "./trackers/trackerDelete";
+import NotesTable from "./notes/notesTable";
+import notesCreate from './notes/notesCreate'
+import { color } from "@mui/system";
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      sessionToken: '' //1
+    }
+  }
+  logout = () => {
+    this.setState({
+      sessionToken: '',
+    });
+    localStorage.clear();
+  }
+
+  componentWillMount() {
+    const token = localStorage.getItem('token'); //4
+    if (token && !this.state.sessionToken) { //5 
+      this.setState({ sessionToken: token });
+    }
+  }
+
+  setSessionState = (token) => {
+    localStorage.setItem('token', token); //3
+    this.setState({ sessionToken: token });
+  }
+
+  render() {
+    return (
+      <Router>
+        <div>
+          <SiteBar clickLogout={this.logout} />
+
+
+
+
+          <Routes>
+
+            <Route exact element={localStorage.getItem('token') ? < TrackerTable fetchNotes={this.props.fetchNotes} /> : <Auth setToken={this.setSessionState} />} path='/' />
+
+            <Route exact element={localStorage.getItem('token') ? <TrackerCreate fetchNotes={this.props.fetchNotes} /> : <Auth setToken={this.setSessionState} />} path='/TrackerCreate' />
+            {/*<Route exact element={localStorage.getItem('token') ? <TrackerDelete /> : <Auth setToken={this.setSessionState} />} path='/TrackerDelete' />*/}
+            <Route exact element={localStorage.getItem('token') ? <TrackerEdit /> : <Auth setToken={this.setSessionState} />} path='/TrackerEdit' />
+
+
+          </Routes>
+
+
+        </div>
+      </Router>
+    );
+  }
 }
 
 export default App;
