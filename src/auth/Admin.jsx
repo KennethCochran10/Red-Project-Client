@@ -20,11 +20,35 @@ class Admin extends Component {
     constructor(props) {
         super(props)
         this.state = {
-
+            data: null,
             user: [],
         }
 
 
+    }
+
+    componentDidMount() {
+        fetch(`http://localhost:8080/auth/userinfo`, {
+            method: 'GET',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                authorization: localStorage.getItem('token')
+            })
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data) {
+                    console.log(data)
+                    if (data) {
+                        this.setState({
+                            user: data.users
+                        })
+                    }
+
+
+
+                }
+            })
     }
     render() {
         return (
@@ -51,9 +75,11 @@ class Admin extends Component {
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                 >
 
-                                    <TableCell align="right">{user.id}</TableCell>
-                                    <TableCell align="right">{user.isAdmin}</TableCell>
-                                    <TableCell align="right">{user.userName}</TableCell>
+                                    <TableCell align="left">{user.id}</TableCell>
+                                    <TableCell align="left">{user.isAdmin ? 'yes' : 'no'}</TableCell>
+                                    <TableCell align="left">{user.username}</TableCell>
+
+
 
                                 </TableRow>
                             ))}

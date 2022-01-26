@@ -1,27 +1,9 @@
 
-import { Modal, ModalFooter, ModalHeader, ModalBody } from 'reactstrap'
-
-
-import React, { Component, useEffect, useState } from 'react';
+import { Modal, ModalHeader, ModalBody } from 'reactstrap'
+import React, { Component, } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-//import PopupState from '@mui/material'
-import { Menu, TableRow } from '@mui/material';
-import { Button, ButtonGroup } from 'reactstrap';
-
-
-
-
-import ClickAwayListener from '@mui/material/ClickAwayListener';
-
-
-import Popper from '@mui/material/Popper';
-import MenuItem from '@mui/material/MenuItem';
-import MenuList from '@mui/material/MenuList';
-import Stack from '@mui/material/Stack';
-import { Route, Link } from 'react-router-dom'
-
-
-
+import { TableRow } from '@mui/material';
+import { Button } from 'reactstrap';
 import { Label, Form, FormGroup } from 'reactstrap'
 import Input from '@mui/material/Input'
 
@@ -30,7 +12,6 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
-
 import Paper from '@mui/material/Paper';
 
 
@@ -75,8 +56,7 @@ class NotesTable extends Component {
             .then(data => this.setState({ data: data.results }))
 
 
-        //.then(data => setNotes(data.results))
-        //.then(toggleNotes())
+
     }
     fetchNotes = () => {
 
@@ -93,8 +73,7 @@ class NotesTable extends Component {
             .then(data => this.setState({ data: data.results }))
 
 
-        //.then(data => setNotes(data.results))
-        //.then(toggleNotes())
+
 
     }
     handleSubmit = (event, tracker) => {
@@ -119,7 +98,7 @@ class NotesTable extends Component {
 
     render() {
         console.log(this.state.data)
-        //const open = Boolean(this.state.anchorEl)
+
 
         return (
 

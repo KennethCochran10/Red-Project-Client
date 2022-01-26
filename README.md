@@ -1,4 +1,8 @@
-1. Title: JobTracker, 
+1. Title: JobTracker, This app is designed to keep track of all your job postings you are interested in along with associated notes. 
+
+2. Description: This app will be able to create, read, update, and delete your 'trackers' as well as associated notes. Allowing you to keep track of your job inquiries in a more organized way. 
+
+3. Use: Upon logging in you will be met with 3 buttons, Logout, Create, and Home. Logout will simply allow a user to logout. Create will allow a user to make their very own 'tracker' which will prompt them with a pop up form. Finally, Home, a table of all of your stored trackers, this will display a list of: Company, Title, Salary, ContactInfo, Have I contacted, have they contacted. Upon having your tracker displayed to you there will be an associated 3 more buttons. Notes, Update, Delete. Notes will allow the user to make quick lines of text that they feel are important. Along with a priority they can set so its to maintain the importance level. 'Add Notes' will publish the notes and save it to that tracker, Update Notes will allow the user to make changes to their notes, and Delete as implied will allow the user to clear their notes from the table. With the update button, this will the user to update their tracker with a form that looks similar to the create button. 
 
 
 

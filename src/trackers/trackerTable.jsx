@@ -1,51 +1,17 @@
-
-// import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-
-
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import Outlet from 'react-router-dom'
-import TrackerDelete from './trackerDelete';
-import { Modal, ModalFooter, ModalHeader, ModalBody } from 'reactstrap'
-
-
-import React, { Component, useEffect, useState } from 'react';
+import { Modal, ModalHeader, ModalBody } from 'reactstrap'
+import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-//import PopupState from '@mui/material'
-import { Menu, TableRow } from '@mui/material';
+import { TableRow } from '@mui/material';
 import { Button, ButtonGroup } from 'reactstrap';
-import TrackerEdit from './trackerEdit'
-
-
-
-import ClickAwayListener from '@mui/material/ClickAwayListener';
-
-
-import Popper from '@mui/material/Popper';
-import MenuItem from '@mui/material/MenuItem';
-import MenuList from '@mui/material/MenuList';
-import Stack from '@mui/material/Stack';
-import { Route, Link } from 'react-router-dom'
-
 import './trackerTable.css'
-
 import { Label, Form, FormGroup } from 'reactstrap'
 import Input from '@mui/material/Input'
-
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
-
 import Paper from '@mui/material/Paper';
-
-// import { Table, Button } from 'reactstrap';
-
-import { experimentalStyled as styled } from '@mui/material/styles';
-import { rootShouldForwardProp } from '@mui/material/styles/styled';
-import NotesTable from '../notes/notesTable';
 class TrackerTable extends Component {
 
     constructor(props) {
@@ -148,11 +114,7 @@ class TrackerTable extends Component {
         })
             .then(res => res.json())
 
-        //.then(data => this.setState({ data: data.results }))
 
-
-        //.then(data => setNotes(data.results))
-        //.then(toggleNotes())
     }
     deleteNotes = () => {
         fetch(`http://localhost:8080/notes/${this.state.notesId}`, {
@@ -167,11 +129,7 @@ class TrackerTable extends Component {
         })
 
             .then(res => res.json())
-        //.then(data => this.setState({ data: data.results }))
 
-
-        //.then(data => setNotes(data.results))
-        //.then(toggleNotes())
     }
     fetchNotes = (trackerId) => {
         console.log(trackerId)
@@ -225,11 +183,7 @@ class TrackerTable extends Component {
 
 
             })
-        //.then(data => this.setState({ data: data.results }))
 
-
-        //.then(data => setNotes(data.results))
-        //.then(toggleNotes())
 
     }
 
@@ -282,37 +236,9 @@ class TrackerTable extends Component {
             .then(res => (res.json()))
             .then(data => console.log(data))
 
-            //.then(data => setNotes(data.results))
-            //.then(toggleNotes())
             .catch(err => console.log(err))
     }
-    getUserInfo = () => {
-        if (this.setState.isAdmin === true) {
 
-            fetch(`http://localhost:8080/auth/userinfo`, {
-                method: 'GET',
-                body: JSON.stringify({
-                    users: {
-                        isAdmin: true
-
-                    }
-                }),
-                headers: new Headers({
-                    'Content-Type': 'application/json',
-                    authorization: localStorage.getItem('token')
-
-                })
-            })
-                .then(res => res.json())
-                .then(data => this.setState({ data: data.results }))
-
-        } else {
-            console.log('no way jose')
-        }
-        //.then(data => setNotes(data.results))
-        //.then(toggleNotes())
-
-    }
 
 
     fetchTracker = () => {
@@ -330,8 +256,7 @@ class TrackerTable extends Component {
             .then(data => this.setState({ data: data.results }))
 
 
-        //.then(data => setNotes(data.results))
-        //.then(toggleNotes())
+
 
     }
     handleSubmit = (event, trackerId) => {
@@ -407,15 +332,13 @@ class TrackerTable extends Component {
             })
 
     }
-    // const toggleNotes = () =>{
 
-    // }
 
 
     render() {
         console.log(this.state.data)
         console.log(this.state.isAdmin)
-        //const open = Boolean(this.state.anchorEl)
+
 
         return (
 

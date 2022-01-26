@@ -1,8 +1,4 @@
 import React from 'react';
-import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody } from 'reactstrap';
-import { ButtonGroup } from 'reactstrap';
-
-
 class TrackerEdit extends React.Component {
     constructor(props) {
         super(props)
@@ -42,18 +38,7 @@ class TrackerEdit extends React.Component {
         })
     }
 
-    // componentDidMount() {
-    //     this.setState({
-    //         id: this.props.tracker.id,
-    //         company: this.props.tracker.company,
-    //         title: this.props.tracker.title,
-    //         salary: this.props.tracker.salary,
-    //         contactInfo: this.props.tracker.contactInfo,
-    //         haveIContacted: this.props.tracker.haveIContacted,
-    //         haveTheyContacted: this.haveTheyContacted
 
-    //     })
-    // }
 
 
     handleChange = (event) => {
