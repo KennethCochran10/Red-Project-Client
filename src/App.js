@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SiteBar from "./home/SiteBar";
 import Auth from './auth/Auth';
+import Admin from "./auth/Admin";
 import {
   BrowserRouter as Router,
   Route,
@@ -18,6 +19,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      user: null,
       sessionToken: '' //1
     }
   }
@@ -35,9 +37,12 @@ class App extends Component {
     }
   }
 
-  setSessionState = (token) => {
+  setSessionState = (token, user) => {
     localStorage.setItem('token', token); //3
-    this.setState({ sessionToken: token });
+    this.setState({
+      sessionToken: token,
+      user: user
+    });
   }
 
   render() {
@@ -50,8 +55,9 @@ class App extends Component {
 
 
           <Routes>
+            <Route exact element={localStorage.getItem('token') && this.state.user?.isAdmin ? <Admin /> : <Auth setToken={this.setSessionState} />} path='/userinfo' />
 
-            <Route exact element={localStorage.getItem('token') ? < TrackerTable fetchNotes={this.props.fetchNotes} /> : <Auth setToken={this.setSessionState} />} path='/' />
+            <Route exact element={localStorage.getItem('token') ? < TrackerTable token={this.state.sessionToken} fetchNotes={this.props.fetchNotes} /> : <Auth setToken={this.setSessionState} />} path='/' />
 
             <Route exact element={localStorage.getItem('token') ? <TrackerCreate fetchNotes={this.props.fetchNotes} /> : <Auth setToken={this.setSessionState} />} path='/TrackerCreate' />
             {/*<Route exact element={localStorage.getItem('token') ? <TrackerDelete /> : <Auth setToken={this.setSessionState} />} path='/TrackerDelete' />*/}

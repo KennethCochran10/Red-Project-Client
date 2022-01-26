@@ -75,6 +75,7 @@ class TrackerTable extends Component {
 
 
     fetchTracker = (e) => {
+        console.log(this.state)
         e.preventDefault()
         fetch(`http://localhost:8080/tracker/create`, {
             method: 'POST',
@@ -95,7 +96,8 @@ class TrackerTable extends Component {
 
             })
         })
-            .then(res => res.json())
+
+            .then(res => (res.json()))
             .then(data => console.log(data))
 
             //.then(data => setNotes(data.results))
@@ -121,7 +123,7 @@ class TrackerTable extends Component {
                     </FormGroup>
                     <FormGroup>
                         <Label for="title">Title</Label>
-                        <Input id="li_title" type="password" name="title" placeholder="enter title" onChange={this.handleChange} />
+                        <Input id="li_title" type="text" name="title" placeholder="enter title" onChange={this.handleChange} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="salary">Salary</Label>

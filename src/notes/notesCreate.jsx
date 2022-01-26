@@ -72,30 +72,7 @@ class NotesCreate extends Component {
 
 
 
-    fetchNotes = (e) => {
-        e.preventDefault()
-        fetch(`http://localhost:8080/notes/create`, {
-            method: 'POST',
-            body: JSON.stringify({
-                notes: {
-                    text: this.state.text,
-                    priority: this.state.priority
 
-                }
-            }),
-            headers: new Headers({
-                'Content-Type': 'application/json',
-                authorization: localStorage.getItem('token')
-
-            })
-        })
-            .then(res => res.json())
-            .then(data => console.log(data))
-
-            //.then(data => setNotes(data.results))
-            //.then(toggleNotes())
-            .catch(err => console.log(err))
-    }
     // const toggleNotes = () =>{
 
     // }
